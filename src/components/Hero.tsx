@@ -1,120 +1,29 @@
 'use client';
-
-import { motion } from 'framer-motion';
+import { MaskContainer } from './ui/svg-mask-effect';
+import { EncryptedText } from './ui/encrypted-text';
 
 export default function Hero() {
   return (
-    <div id="home" className="grid px-4 grid-cols-1 md:grid-cols-10 gap-10 md:gap-16 justify-center w-full mx-auto mt-10">
-      <motion.header 
-        className="col-span-10 md:col-span-5"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <motion.h1 
-          className="text-4xl font-bold my-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Hi, I am Aniket Gupta 👋
-        </motion.h1>
-        <motion.p 
-          className="text-2xl text-green-600 my-2 font-semibold gradient-text"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          Full Stack Developer
-        </motion.p>
-        <motion.p 
-          className="text-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          I&apos;m a software engineer with a passion for building products that make a difference. 
-          I build fast, reliable web apps and love solving real problems.
-        </motion.p>
-
-        <motion.div 
-          className="grid md:grid-cols-2 mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <div className='flex gap-8'>
-            <motion.a
-              href={`mailto:guptaaniket600.ag@gmail.com`}
-              className="text-text-secondary hover:text-foreground transition-colors"
-              aria-label="Email"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
-                <path d="M12 23.403V23.39 10.389L11.88 10.3h-.01L9.14 8.28C7.47 7.04 5.09 7.1 3.61 8.56 2.62 9.54 2 10.9 2 12.41v3.602L12 23.403zM38 23.39v.013l10-7.391V12.41c0-1.49-.6-2.85-1.58-3.83-1.46-1.457-3.765-1.628-5.424-.403L38.12 10.3 38 10.389V23.39zM14 24.868l10.406 7.692c.353.261.836.261 1.189 0L36 24.868V11.867L25 20l-11-8.133V24.868zM38 25.889V41c0 .552.448 1 1 1h6.5c1.381 0 2.5-1.119 2.5-2.5V18.497L38 25.889zM12 25.889L2 18.497V39.5C2 40.881 3.119 42 4.5 42H11c.552 0 1-.448 1-1V25.889z"></path>
-              </svg>
-            </motion.a>
-            <motion.a 
-              href='https://github.com/An1ketGupta' 
-              aria-label="GitHub" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-full shadow-md hover:shadow-green-500/30' aria-hidden="true">
-                <path d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z"></path>
-              </svg>
-            </motion.a>
-            <motion.a 
-              href='https://www.linkedin.com/in/aniket-gupta-06a56128a/' 
-              aria-label="LinkedIn" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
-                <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
-              </svg>
-            </motion.a>
-            <motion.a 
-              href='https://x.com/funnyket_' 
-              aria-label="Twitter/X" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
-                <path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path>
-              </svg>
-            </motion.a>
-          </div>
-        </motion.div>
-      </motion.header>
-      <motion.figure 
-        className="col-span-10 md:col-span-5 flex justify-center md:justify-end"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-      >
-        <motion.img 
-          className="transition-all duration-200 h-[300px] w-auto shadow-xl
-                      rounded-2xl dark:shadow-green-500/30 shadow-green-500/20
-                      hover:shadow-green-500/40 dark:hover:shadow-green-500/50 
-                      border-2 border-green-500/20 hover:border-green-500/40" 
-          src={"https://pbs.twimg.com/profile_banners/1918912401061150720/1748067578/1080x360"}
-          alt="Aniket Gupta - Software Engineer"
-          whileHover={{ scale: 1.02, rotate: 1 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        />
-      </motion.figure>
+    <div id="home">
+      <MaskContainer revealText = {
+            <EncryptedText
+            text="Hi, I am Aniket Gupta 🤟"
+            className="text-6xl px-4"
+            />
+        }>
+            <div className="text-6xl text-black">
+                <div>
+                    I am A&nbsp;
+                    <span className="text-green-500">
+                        Full stack
+                    </span>
+                    &nbsp; and &nbsp;
+                    <span className="text-green-500">
+                        Web3 developer
+                    </span>. 
+                </div>
+            </div>
+        </MaskContainer>
     </div>
   );
 }

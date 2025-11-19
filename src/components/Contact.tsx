@@ -17,14 +17,14 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="container py-16 md:py-24 scroll-mt-24 min-h-[400px]"
+      className="container pt-20 scroll-mt-24 min-h-[300px] sm:min-h-[400px]"
       variants={staggerChildrenSimple}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
     >
       <motion.h2
-        className="text-3xl md:text-4xl font-bold mb-12"
+        className="text-3xl md:text-4xl font-bold mb-8 sm:mb-12"
         variants={fadeInUpSimple}
       >
         Contact
@@ -32,7 +32,7 @@ export default function Contact() {
 
       <div className="grid md:grid-cols-2">
         <motion.div variants={fadeInUpSimple} className="space-y-2">
-          <div className='flex gap-8'>
+          <div className='flex gap-4 sm:gap-6 md:gap-8 flex-wrap justify-center md:justify-start'>
             <motion.a
               href={`mailto:guptaaniket600.ag@gmail.com`}
               className="text-text-secondary hover:text-foreground transition-colors"
@@ -41,7 +41,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="36" height="36" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30 sm:w-10 sm:h-10' aria-hidden="true">
                 <path d="M12 23.403V23.39 10.389L11.88 10.3h-.01L9.14 8.28C7.47 7.04 5.09 7.1 3.61 8.56 2.62 9.54 2 10.9 2 12.41v3.602L12 23.403zM38 23.39v.013l10-7.391V12.41c0-1.49-.6-2.85-1.58-3.83-1.46-1.457-3.765-1.628-5.424-.403L38.12 10.3 38 10.389V23.39zM14 24.868l10.406 7.692c.353.261.836.261 1.189 0L36 24.868V11.867L25 20l-11-8.133V24.868zM38 25.889V41c0 .552.448 1 1 1h6.5c1.381 0 2.5-1.119 2.5-2.5V18.497L38 25.889zM12 25.889L2 18.497V39.5C2 40.881 3.119 42 4.5 42H11c.552 0 1-.448 1-1V25.889z"></path>
               </svg>
             </motion.a>
@@ -67,7 +67,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="36" height="36" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30 sm:w-10 sm:h-10' aria-hidden="true">
                 <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
               </svg>
             </motion.a>
@@ -80,7 +80,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30' aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="36" height="36" viewBox="0 0 50 50" className='bg-white rounded-xl shadow-md hover:shadow-green-500/30 sm:w-10 sm:h-10' aria-hidden="true">
                 <path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path>
               </svg>
             </motion.a>

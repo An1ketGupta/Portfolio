@@ -51,4 +51,3 @@ export const skills = {
   specializations: ["REST APIs", "JWT Auth", "Payment Gateway"],
 };
 
-

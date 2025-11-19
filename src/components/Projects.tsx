@@ -7,7 +7,7 @@ export default function Projects(){
   return (
     <motion.section 
       id="projects" 
-      className="container py-16 md:py-24 scroll-mt-24" 
+      className="container py-12 scroll-mt-0" 
       variants={staggerChildren()} 
       initial="hidden" 
       whileInView="show" 
@@ -50,10 +50,10 @@ export default function Projects(){
             <div className="relative">
               <div className="absolute left-6 top-6 w-3 h-3 rounded-full bg-green-500 hidden md:block"></div>
               
-              <div className="md:ml-16 card p-6 md:p-8 hover:shadow-lg transition-shadow">
+              <div className="md:ml-16 card p-4 sm:p-6 md:p-8 hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold mb-2">{project.title}</h3>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">{project.title}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map(tech => (
                         <span 

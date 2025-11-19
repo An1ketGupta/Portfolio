@@ -17,7 +17,7 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="container py-16 md:py-24"
+      className="container py-16 md:py-24 scroll-mt-24 min-h-[400px]"
       variants={staggerChildrenSimple}
       initial="hidden"
       whileInView="show"

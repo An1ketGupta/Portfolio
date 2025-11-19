@@ -10,7 +10,7 @@ export default function Home(){
   return (
     <>
       <Navbar />
-      <div className="max-w-[153vh] w-full mx-auto px-4 sm:px-6 lg:px-0">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-0">
         <Hero />
         <About />
         <Projects />

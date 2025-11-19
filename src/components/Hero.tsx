@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <div id="home" className="grid grid-cols-1 md:grid-cols-10 gap-10 md:gap-16 justify-center w-full mx-auto mt-10">
+    <div id="home" className="grid px-4 grid-cols-1 md:grid-cols-10 gap-10 md:gap-16 justify-center w-full mx-auto mt-10">
       <motion.header 
         className="col-span-10 md:col-span-5"
         initial={{ opacity: 0, x: -50 }}

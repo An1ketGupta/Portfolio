@@ -5,7 +5,7 @@ export default function About(){
   return (
     <motion.section 
       id="about" 
-      className="w-auto mt-30 scroll-mt-20 px-4 sm:px-0"
+      className="w-auto mt-20 scroll-mt-20 px-4"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -19,10 +19,9 @@ export default function About(){
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <span className="gradient-text">
+        <span>
           Education
         </span>
-        <div className="w-auto max-w-43 bg-gradient-to-r from-green-600 to-green-400 h-1 mt-2"></div>
       </motion.h2>
 
       <motion.div 
@@ -36,7 +35,7 @@ export default function About(){
           <span className="font-semibold text-lg text-foreground">
             Indian Institute of Information Technology (IIITDM Kurnool), Andhra Pradesh
           </span>
-          <span className="text-text-secondary font-small">
+          <span className="text-text-secondary text-sm">
             B.Tech in Computer Science and Engineering
           </span>
         </span>

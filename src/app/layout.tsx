@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aniketgupta.dev"),
+  metadataBase: new URL("https://justaniket.vercel.app"),
   title: {
     default: "Aniket Gupta - Full Stack Developer | Software Engineer Portfolio",
     template: "%s | Aniket Gupta"
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aniketgupta.dev",
+    url: "https://justaniket.vercel.app",
     siteName: "Aniket Gupta Portfolio",
     title: "Aniket Gupta - Full Stack Developer | Software Engineer",
     description: "Full Stack Developer specializing in React, Next.js, and Node.js. Building fast, reliable web applications with modern technologies.",

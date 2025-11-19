@@ -71,7 +71,7 @@ export default function Projects(){
                       <a
                         href={project.live}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="text-sm text-text-secondary hover:text-foreground transition-colors flex items-center gap-1"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ export default function Projects(){
                       <a
                         href={project.github}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="text-sm text-text-secondary hover:text-foreground transition-colors flex items-center gap-1"
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

@@ -12,15 +12,35 @@ export const projects = [
       "AWS EC2",
     ],
     features:
-      "Full-stack marketplace, Razorpay + OAuth, optimized backend (400ms → 300ms), scaled to 500+ users, automated SMS confirmations.",
+    "Full-stack marketplace, Razorpay + OAuth, optimized backend (400ms → 300ms), scaled to 500+ users, automated SMS confirmations, product search and filtering with category management.",
     live: "https://apnabzaar.netlify.app/",
     github: "https://github.com/An1ketGupta/Apna-Bazaar",
+  },
+  {
+    title: "Ride Sharing DBMS",
+    tech: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "Socket.io",
+      "Razorpay",
+      "Stripe",
+      "Tailwind CSS",
+      "Vite",
+      "JWT",
+    ],
+    features:
+      "Full-stack ride-sharing platform featuring real-time matching via Socket IO, OpenRouteService navigation, multi-gateway payments (Razorpay/Stripe), and advanced safety protocols managed through a comprehensive admin dashboard.",
+    live: "",
+    github: "https://github.com/An1ketGupta/Ride-sharing-app",
   },
   {
     title: "Competitive Programming Tracker",
     tech: ["MongoDB", "Express.js", "React", "Node.js"],
     features:
-      "Tracks contests (CodeChef, LeetCode, Codeforces), 75+ users, 5 APIs integrated, 1000+ data points/day, JWT auth with roles.",
+      "Tracks contests (CodeChef, LeetCode, Codeforces), 75+ users, 5 APIs integrated, 1000+ data points/day, JWT auth with roles, leaderboard system with user rankings and progress analytics.",
     live: "https://cptracker.netlify.app/",
     github: "https://github.com/An1ketGupta/CP-Tracker",
   },

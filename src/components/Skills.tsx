@@ -42,7 +42,7 @@ function SkillIcon({
   isDark,
 }: {
   skill: string;
-  skillIcons: Record<string, React.ComponentType<{ className?: string }>>;
+  skillIcons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>>;
   skillColors: Record<string, string | { light: string; dark: string }>;
   radius: number;
   angle: number;
@@ -136,7 +136,7 @@ export default function Skills(){
   // Default to dark theme if not mounted yet (matches defaultTheme in layout)
   const isDark = mounted ? theme === 'dark' : true;
 
-  const skillIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  const skillIcons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
     "JavaScript": SiJavascript,
     "Python": SiPython,
     "C++": SiCplusplus,

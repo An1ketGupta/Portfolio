@@ -13,11 +13,15 @@ export default function Hero() {
         }>
             <div className="text-6xl text-black">
                 <div>
-                    I am A&nbsp;
+                    <span className='text-white dark:text-black'>
+                        I am a&nbsp; 
+                    </span>
                     <span className="text-green-500">
                         Full stack
                     </span>
-                    &nbsp; and &nbsp;
+                    <span className='text-white dark:text-black'>
+                        &nbsp; and &nbsp;
+                    </span>
                     <span className="text-green-500">
                         Web3 developer
                     </span>. 

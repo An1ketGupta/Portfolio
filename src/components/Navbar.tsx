@@ -15,10 +15,26 @@ import {
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
+  const [showDock, setShowDock] = useState(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('home');
+      if (heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setShowDock(heroBottom < window.innerHeight * 0.5);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -44,9 +60,18 @@ export default function Navbar() {
     },
   ];
 
+  if (!showDock) return null;
+
   return (
-    <div className="sticky top-165 flex z-50 items-center justify-center w-full py-4">
-      <FloatingDock items={items}/>
+    <div 
+      className="fixed bottom-0 left-0 right-0 flex z-50 items-center justify-center w-full pointer-events-none transition-opacity duration-300"
+      style={{ 
+        paddingBottom: 'max(3rem, calc(3rem + env(safe-area-inset-bottom, 0px)))'
+      }}
+    >
+      <div className="pointer-events-auto">
+        <FloatingDock items={items}/>
+      </div>
     </div>
   )  
 }

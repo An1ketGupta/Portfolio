@@ -25,7 +25,7 @@ export default function About(){
       </motion.h2>
 
       <motion.div 
-        className="bg-green-200 dark:bg-green-900 border border-green-500/20 flex flex-col md:flex-row justify-between gap-4 md:gap-0 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-green-500/10 transition-all"
+        className="bg-green-300 dark:bg-green-900 border border-green-500/20 flex flex-col md:flex-row justify-between gap-4 md:gap-0 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-green-500/10 transition-all"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

@@ -3,6 +3,7 @@
 import { FloatingDock } from './ui/floating-dock';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   IconHome, 
   IconUser, 
@@ -60,19 +61,28 @@ export default function Navbar() {
     },
   ];
 
-  if (!showDock) return null;
-
   return (
-    <div 
-      className="fixed bottom-0 left-0 right-0 flex z-50 items-center justify-center w-full pointer-events-none transition-opacity duration-300"
-      style={{ 
-        paddingBottom: 'max(3rem, calc(3rem + env(safe-area-inset-bottom, 0px)))'
-      }}
-    >
-      <div className="pointer-events-auto">
-        <FloatingDock items={items}/>
-      </div>
-    </div>
+    <AnimatePresence>
+      {showDock && (
+        <motion.div 
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
+          transition={{ 
+            duration: 0.4, 
+            ease: [0.4, 0, 0.2, 1]
+          }}
+          className="fixed bottom-0 left-0 right-0 flex z-50 items-center justify-center w-full pointer-events-none"
+          style={{ 
+            paddingBottom: 'max(3rem, calc(3rem + env(safe-area-inset-bottom, 0px)))'
+          }}
+        >
+          <div className="pointer-events-auto">
+            <FloatingDock items={items}/>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )  
 }
 

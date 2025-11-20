@@ -2,6 +2,7 @@
 import { skills } from "../data/site";
 import { motion } from 'framer-motion';
 import { staggerChildren } from "../lib/motion";
+import { useState } from 'react';
 import { 
   SiJavascript, 
   SiPython, 
@@ -29,6 +30,73 @@ import {
   FaLock, 
   FaCreditCard 
 } from "react-icons/fa";
+
+function SkillIcon({
+  skill,
+  skillIcons,
+  radius,
+  angle,
+  duration,
+}: {
+  skill: string;
+  skillIcons: Record<string, React.ComponentType<{ className?: string }>>;
+  radius: number;
+  angle: number;
+  duration: number;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="absolute top-1/2 left-1/2"
+      style={{
+        width: radius * 2,
+        height: radius * 2,
+        marginLeft: -radius,
+        marginTop: -radius,
+        pointerEvents: 'none',
+      }}
+      animate={{
+        rotate: 360,
+      }}
+      transition={{
+        duration: duration,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+      initial={{
+        rotate: angle,
+      }}
+    >
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ zIndex: 50, pointerEvents: 'auto' }}
+      >
+        <div className="w-16 h-16 bg-gradient-to-br from-card to-card/80 text-card-foreground rounded-full shadow-xl shadow-green-500/5 border-2 border-green-500/10 dark:border-green-500/15 flex items-center justify-center backdrop-blur-sm hover:border-green-500/20 hover:shadow-green-500/10 transition-all cursor-pointer relative">
+          {(() => {
+            const IconComponent = skillIcons[skill];
+            return IconComponent ? (
+              <IconComponent className="w-8 h-8 text-foreground drop-shadow-[0_0_8px_rgba(34,197,94,0.15)]" />
+            ) : (
+              <span className="text-xl font-bold text-foreground">{skill.substring(0, 2).toUpperCase()}</span>
+            );
+          })()}
+        </div>
+        <div 
+          className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          style={{ zIndex: 10000 }}
+        >
+          <div className="bg-card/95 dark:bg-card/95 backdrop-blur-sm border border-green-500/20 dark:border-green-500/25 rounded-lg px-3 py-1.5 shadow-lg shadow-green-500/5 whitespace-nowrap">
+            <span className="text-xs font-semibold text-foreground">{skill}</span>
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-card/95 dark:bg-card/95 border-r border-b border-green-500/20 dark:border-green-500/25 rotate-45"></div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
   
 export default function Skills(){
   const skillIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -101,9 +169,9 @@ export default function Skills(){
         Skills & Tools
       </motion.h2>
       
-      <div className="hidden md:block relative w-full max-w-5xl mx-auto min-h-[700px] flex items-center justify-center">
+      <div className="hidden md:block relative w-full max-w-5xl mx-auto min-h-[700px] flex items-center justify-center overflow-visible">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-24 h-24 bg-white dark:bg-card rounded-full flex items-center justify-center shadow-2xl dark:shadow-white/30 dark:shadow-xl border-2 border-green-500/10 dark:border-green-500/15">
+          <div className="w-24 h-24 bg-white dark:bg-card rounded-full flex items-center justify-center shadow-xl dark:shadow-white/10 dark:shadow-xl border-2 border-green-500/10 dark:border-green-500/15">
             <span className="text-sm font-bold text-black dark:text-foreground">SKILLS</span>
           </div>
         </div>
@@ -111,7 +179,7 @@ export default function Skills(){
         {[1, 2, 3].map((orbit) => (
           <div
             key={`orbit-${orbit}`}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-muted/40 border-green-500/5 dark:border-green-500/8"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-muted/40 border-green-500/5 dark:border-green-500/8 pointer-events-none"
             style={{
               width: `${getOrbitRadius(orbit) * 2}px`,
               height: `${getOrbitRadius(orbit) * 2}px`,
@@ -128,46 +196,14 @@ export default function Skills(){
           const duration = getOrbitDuration(orbit);
 
           return (
-            <motion.div
+            <SkillIcon
               key={skill}
-              className="absolute top-1/2 left-1/2"
-              style={{
-                width: radius * 2,
-                height: radius * 2,
-                marginLeft: -radius,
-                marginTop: -radius,
-              }}
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: duration,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              initial={{
-                rotate: angle,
-              }}
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-card to-card/80 text-card-foreground rounded-full shadow-xl shadow-green-500/5 border-2 border-green-500/10 dark:border-green-500/15 flex items-center justify-center backdrop-blur-sm hover:border-green-500/20 hover:shadow-green-500/10 transition-all cursor-pointer">
-                  {(() => {
-                    const IconComponent = skillIcons[skill];
-                    return IconComponent ? (
-                      <IconComponent className="w-8 h-8 text-foreground drop-shadow-[0_0_8px_rgba(34,197,94,0.15)]" />
-                    ) : (
-                      <span className="text-xl font-bold text-foreground">{skill.substring(0, 2).toUpperCase()}</span>
-                    );
-                  })()}
-                </div>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
-                  <div className="bg-card/95 dark:bg-card/95 backdrop-blur-sm border border-green-500/20 dark:border-green-500/25 rounded-lg px-3 py-1.5 shadow-lg shadow-green-500/5 whitespace-nowrap">
-                    <span className="text-xs font-semibold text-foreground">{skill}</span>
-                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-card/95 dark:bg-card/95 border-l border-t border-green-500/20 dark:border-green-500/25 rotate-45"></div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              skill={skill}
+              skillIcons={skillIcons}
+              radius={radius}
+              angle={angle}
+              duration={duration}
+            />
           );
         })}
       </div>

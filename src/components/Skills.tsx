@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { staggerChildren } from "../lib/motion";
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { 
-  SiJavascript, 
-  SiPython, 
-  SiCplusplus, 
-  SiTypescript, 
-  SiMysql, 
+import {
+  SiJavascript,
+  SiPython,
+  SiCplusplus,
+  SiTypescript,
+  SiMysql,
   SiCss3,
   SiNextdotjs,
   SiReact,
@@ -24,12 +24,19 @@ import {
   SiAmazon,
   SiNetlify,
   SiVercel,
+  SiEthereum,
+  SiSolana,
 } from "react-icons/si";
-import { 
-  FaDatabase, 
-  FaPlug, 
-  FaLock, 
-  FaCreditCard 
+import {
+  FaDatabase,
+  FaPlug,
+  FaLock,
+  FaCreditCard,
+  FaCubes,
+  FaCoins,
+  FaExchangeAlt,
+  FaFileContract,
+  FaAnchor,
 } from "react-icons/fa";
 
 function SkillIcon({
@@ -51,14 +58,14 @@ function SkillIcon({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const colorValue = skillColors[skill];
-  const iconColor = typeof colorValue === 'object' 
+  const iconColor = typeof colorValue === 'object'
     ? (isDark ? colorValue.dark : colorValue.light)
     : (colorValue || '#6b7280');
 
   // Helper function to convert hex to RGB for glow effect
   const hexToRgb = (hex: string): string => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result 
+    return result
       ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
       : '255, 255, 255';
   };
@@ -87,7 +94,7 @@ function SkillIcon({
         rotate: angle,
       }}
     >
-      <div 
+      <div
         className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -97,11 +104,11 @@ function SkillIcon({
           {(() => {
             const IconComponent = skillIcons[skill];
             return IconComponent ? (
-              <IconComponent 
-                className="w-8 h-8 transition-all duration-300" 
-                style={{ 
+              <IconComponent
+                className="w-8 h-8 transition-all duration-300"
+                style={{
                   color: iconColor,
-                  filter: isDark 
+                  filter: isDark
                     ? `drop-shadow(0 0 8px rgba(${glowRgb}, 0.5)) drop-shadow(0 0 12px rgba(${glowRgb}, 0.3)) drop-shadow(0 0 16px rgba(${glowRgb}, 0.15))`
                     : 'drop-shadow(0 0 8px rgba(34,197,94,0.15))'
                 }}
@@ -111,7 +118,7 @@ function SkillIcon({
             );
           })()}
         </div>
-        <div 
+        <div
           className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
           style={{ zIndex: 10000 }}
         >
@@ -124,15 +131,15 @@ function SkillIcon({
     </motion.div>
   );
 }
-  
-export default function Skills(){
+
+export default function Skills() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   // Default to dark theme if not mounted yet (matches defaultTheme in layout)
   const isDark = mounted ? theme === 'dark' : true;
 
@@ -160,6 +167,14 @@ export default function Skills(){
     "REST APIs": FaPlug,
     "JWT Auth": FaLock,
     "Payment Gateway": FaCreditCard,
+    "Ethereum": SiEthereum,
+    "Solana": SiSolana,
+    "Foundry": FaCubes,
+    "Anchor": FaAnchor,
+    "SPL Token": FaCoins,
+    "Smart Contracts": FaFileContract,
+    "DeFi": FaExchangeAlt,
+    "AMM": FaExchangeAlt,
   };
 
   const skillColors: Record<string, string | { light: string; dark: string }> = {
@@ -183,22 +198,31 @@ export default function Skills(){
     "AWS EC2": { light: "#FF9900", dark: "#FFB84D" }, // Brighter orange in dark mode
     "Netlify": { light: "#00C7B7", dark: "#00E6D4" }, // Brighter teal in dark mode
     "Vercel": { light: "#000000", dark: "#ffffff" },
-    "REST APIs": { light: "#FF6C37", dark: "#FF8C5A" }, // Brighter orange in dark mode
-    "JWT Auth": { light: "#000000", dark: "#a78bfa" }, // Brighter purple in dark mode
-    "Payment Gateway": { light: "#00A86B", dark: "#00D98B" }, // Brighter green in dark mode
+    "REST APIs": { light: "#FF6C37", dark: "#FF8C5A" },
+    "JWT Auth": { light: "#000000", dark: "#a78bfa" },
+    "Payment Gateway": { light: "#00A86B", dark: "#00D98B" },
+    "Ethereum": { light: "#627EEA", dark: "#8B9FFF" },
+    "Solana": { light: "#9945FF", dark: "#B366FF" },
+    "Foundry": { light: "#FF6B35", dark: "#FF8C5A" },
+    "Anchor": { light: "#7C3AED", dark: "#A78BFA" },
+    "SPL Token": { light: "#14F195", dark: "#4ADE80" },
+    "Smart Contracts": { light: "#627EEA", dark: "#8B9FFF" },
+    "DeFi": { light: "#00D395", dark: "#4ADE80" },
+    "AMM": { light: "#FF007A", dark: "#FF4DA6" },
   };
 
   const allSkills = [
     ...skills.programming,
     ...skills.frameworks,
     ...skills.databases,
+    ...skills.web3,
     ...skills.tools,
     ...skills.cloud,
     ...skills.specializations,
   ];
 
   const totalSkills = allSkills.length;
-  const orbits = 3;
+  const orbits = 4;
   const skillsPerOrbit = Math.ceil(totalSkills / orbits);
 
   const getSkillOrbit = (index: number) => {
@@ -206,23 +230,23 @@ export default function Skills(){
   };
 
   const getOrbitRadius = (orbit: number) => {
-    return 140 + (orbit - 1) * 90;
+    return 120 + (orbit - 1) * 80;
   };
 
   const getOrbitDuration = (orbit: number) => {
-    return 25 + orbit * 15;
+    return 25 + orbit * 12;
   };
 
   return (
-    <motion.section 
-      id="skills" 
-      className="container pt-16 md:pt-20 overflow-visible" 
-      variants={staggerChildren()} 
-      initial="hidden" 
-      whileInView="show" 
+    <motion.section
+      id="skills"
+      className="container pt-16 md:pt-20 overflow-visible"
+      variants={staggerChildren()}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <motion.h2 
+      <motion.h2
         className="text-3xl md:text-4xl font-bold mb-12 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +255,7 @@ export default function Skills(){
       >
         Skills & Tools
       </motion.h2>
-      
+
       <div className="hidden md:block relative w-full max-w-5xl mx-auto min-h-[700px] flex items-center justify-center overflow-visible">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
           <div className="w-24 h-24 bg-white dark:bg-card rounded-full flex items-center justify-center shadow-xl dark:shadow-white/10 dark:shadow-xl border-2 border-green-500/10 dark:border-green-500/15">
@@ -239,7 +263,7 @@ export default function Skills(){
           </div>
         </div>
 
-        {[1, 2, 3].map((orbit) => (
+        {[1, 2, 3, 4].map((orbit) => (
           <div
             key={`orbit-${orbit}`}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-muted/40 border-green-500/5 dark:border-green-500/8 pointer-events-none"
@@ -273,7 +297,7 @@ export default function Skills(){
         })}
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -281,8 +305,8 @@ export default function Skills(){
         className="md:hidden grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 max-w-sm mx-auto px-4"
       >
         {allSkills.map((skill) => (
-          <div 
-            key={skill} 
+          <div
+            key={skill}
             className="relative flex flex-col items-center gap-2"
           >
             <div className="relative group">
@@ -290,26 +314,26 @@ export default function Skills(){
                 {(() => {
                   const IconComponent = skillIcons[skill];
                   const colorValue = skillColors[skill];
-                  const iconColor = typeof colorValue === 'object' 
+                  const iconColor = typeof colorValue === 'object'
                     ? (isDark ? colorValue.dark : colorValue.light)
                     : (colorValue || '#6b7280');
-                  
+
                   // Helper function to convert hex to RGB for glow effect
                   const hexToRgb = (hex: string): string => {
                     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                    return result 
+                    return result
                       ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
                       : '255, 255, 255';
                   };
-                  
+
                   const glowRgb = hexToRgb(iconColor);
-                  
+
                   return IconComponent ? (
-                    <IconComponent 
-                      className="w-7 h-7 sm:w-8 sm:h-8 transition-all duration-300" 
-                      style={{ 
+                    <IconComponent
+                      className="w-7 h-7 sm:w-8 sm:h-8 transition-all duration-300"
+                      style={{
                         color: iconColor,
-                        filter: isDark 
+                        filter: isDark
                           ? `drop-shadow(0 0 6px rgba(${glowRgb}, 0.5)) drop-shadow(0 0 10px rgba(${glowRgb}, 0.3)) drop-shadow(0 0 14px rgba(${glowRgb}, 0.15))`
                           : 'drop-shadow(0 0 6px rgba(34,197,94,0.15))'
                       }}
@@ -326,7 +350,7 @@ export default function Skills(){
                 </div>
               </div>
             </div>
-            
+
             <span className="text-[10px] sm:text-xs text-center text-muted-foreground font-medium max-w-[3.5rem] sm:max-w-[4rem] truncate">
               {skill}
             </span>

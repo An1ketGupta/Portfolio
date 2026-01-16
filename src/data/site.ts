@@ -145,6 +145,7 @@ export const skills = {
   programming: ["JavaScript", "Python", "C++", "TypeScript", "SQL", "CSS"],
   frameworks: ["Next.js", "React.js", "Node.js", "Express.js", "Tailwind CSS"],
   databases: ["MongoDB", "MySQL", "PostgreSQL"],
+  web3: ["Ethereum", "Solana", "Foundry", "Anchor", "SPL Token", "Smart Contracts", "DeFi", "AMM"],
   tools: ["Git", "GitHub", "Postman"],
   cloud: ["AWS EC2", "Netlify", "Vercel"],
   specializations: ["REST APIs", "JWT Auth", "Payment Gateway"],

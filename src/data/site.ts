@@ -15,7 +15,7 @@ export const projectCategories = {
           "NextAuth",
         ],
         features:
-          "Full-stack social media for sports fans with real-time chat, live match discussions, community posts, infinite scroll feed, and user authentication. Socket.io for live messaging and WebSocket connections.",
+          "Full-stack social media for sports fans with real-time chat, live match discussions, community posts, infinite scroll feed, and user authentication and Socket_io for live messaging and WebSocket connections.",
         live: "https://letsportstalk.vercel.app/",
         github: "https://github.com/An1ketGupta/SportsTalk",
       },

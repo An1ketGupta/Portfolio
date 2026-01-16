@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description: "Full Stack Developer specializing in React, Next.js, and Node.js. Building fast, reliable web applications with modern technologies.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/cover.png",
         width: 1200,
         height: 630,
         alt: "Aniket Gupta - Full Stack Developer",
